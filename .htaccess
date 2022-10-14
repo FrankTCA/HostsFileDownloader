@@ -1,0 +1,19 @@
+<Files .gitignore>
+Require all denied
+</Files>
+
+<Files LICENSE.txt>
+Require all denied
+</Files>
+
+<Files README.md>
+Require all denied
+</Files>
+
+<Files hosts>
+Require all denied
+</Files>
+
+<Files timestamp.txt>
+Require all denied
+</Files>
