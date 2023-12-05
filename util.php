@@ -65,8 +65,7 @@ class Util {
         $rows = explode("\n", $file);
         $writeStr = "server:\n\n";
         foreach ($rows as $line) {
-            if (!str_starts_with($line, "#") && $line !== "") {
-                echo $line;
+            if (!str_starts_with($line, "#")) {
                 $domain = str_split(" ")[1];
                 $newLine = "local-zone: \"$domain\" redirect\nlocal-data: \"$domain. A 0.0.0.0\n";
                 $writeStr .= $newLine;
