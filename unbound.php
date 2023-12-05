@@ -8,9 +8,9 @@ $util->unbound_change();
 header('Content-Description: File Transfer');
 header('Content-Type: application/octet-stream');
 header('Content-Disposition: attachment; filename="hosts.txt"');
-header('Content-Length: ' . filesize("./hosts"));
+header('Content-Length: ' . filesize("./unbound"));
 header('Pragma: public');
 
 flush();
-readfile("./unbound", true);
+readfile("./unbound");
 die();
