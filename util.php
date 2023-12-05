@@ -61,7 +61,7 @@ class Util {
 
     function unbound_change() {
         $unbound_file = fopen("./unbound", 'w');
-        fwrite("server:\n\n");
+        fwrite($unbound_file, "server:\n\n");
         foreach (file("./hosts") as $line) {
             if (strpos($line, "127.0.0.1") !== false) {
                 $domain = str_split(" ")[1];
