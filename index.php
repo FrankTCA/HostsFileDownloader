@@ -13,5 +13,5 @@ header('Pragma: public');
 
 flush();
 
-readfile("./hosts", true);
+readfile("./hosts.txt", true);
 die();

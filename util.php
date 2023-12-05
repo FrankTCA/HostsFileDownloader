@@ -54,7 +54,7 @@ class Util {
     }
 
     function localhost() {
-        $str = file_get_contents("./hosts");
+        $str = file_get_contents("./hosts.txt");
         $str = str_replace("0.0.0.0", "127.0.0.1", $str);
         file_put_contents("./hosts.txt", $str);
     }
@@ -67,7 +67,8 @@ class Util {
         foreach (file("./hosts.txt") as $line) {
             if (str_starts_with($line, "127.0.0.1")) {
                 $domain = mb_split(" ", $line);
-                $newLine = "local-zone: \"$domain[1]\" redirect\nlocal-data: \"$domain[1]. A 0.0.0.0\n";
+                $fixed_str = str_replace("\n", "", $domain[1]);
+                $newLine = "local-zone: \"$fixed_str\" redirect\nlocal-data: \"$fixed_str. A 0.0.0.0\n";
                 $writeStr .= $newLine;
             }
         }
