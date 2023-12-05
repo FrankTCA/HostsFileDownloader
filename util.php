@@ -66,9 +66,12 @@ class Util {
         $writeStr = "server:\n\n";
         foreach ($rows as $line) {
             if (!str_starts_with($line, "#")) {
-                $domain = str_split(" ")[1];
-                $newLine = "local-zone: \"$domain\" redirect\nlocal-data: \"$domain. A 0.0.0.0\n";
-                $writeStr .= $newLine;
+                $domain = str_split(" ");
+                if ($domain > 1) {
+                    $newLine = "local-zone: \"$domain[1]\" redirect\nlocal-data: \"$domain[1]. A 0.0.0.0\n";
+                    $writeStr .= $newLine;
+                }
+
             }
         }
         fwrite($unbound_file, $writeStr);
