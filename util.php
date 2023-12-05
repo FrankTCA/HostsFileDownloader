@@ -67,11 +67,8 @@ class Util {
         foreach (file("./hosts") as $line) {
             if (str_starts_with($line, "127.0.0.1")) {
                 $domain = str_split(" ");
-                if (sizeof($domain) > 1) {
-                    $newLine = "local-zone: \"$domain[1]\" redirect\nlocal-data: \"$domain[1]. A 0.0.0.0\n";
-                    $writeStr .= $newLine;
-                }
-
+                $newLine = "local-zone: \"$domain[1]\" redirect\nlocal-data: \"$domain[1]. A 0.0.0.0\n";
+                $writeStr .= $newLine;
             }
         }
         fwrite($unbound_file, $writeStr);
