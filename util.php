@@ -68,7 +68,7 @@ class Util {
             if (str_starts_with($line, "127.0.0.1")) {
                 $domain = mb_split(" ", $line);
                 $fixed_str = str_replace("\n", "", $domain[1]);
-                $newLine = "local-zone: \"$fixed_str\" redirect\nlocal-data: \"$fixed_str. A 0.0.0.0\n";
+                $newLine = "local-zone: \"$fixed_str\" redirect\nlocal-data: \"$fixed_str. A 0.0.0.0\"\n";
                 $writeStr .= $newLine;
             }
         }
