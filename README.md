@@ -2,7 +2,7 @@
 
 This is for an info toast article that teaches people to enable systemwide privacy protection
 
-Link to article: [Article not done yet]
+Link to article: <a href="https://infotoast.org/site/index.php/2022/11/04/how-to-stop-trackers-systemwide/">How to Stop Trackers Systemwide - Info Toast</a>
 
 This repository downloads the hosts.txt file only once per day (to prevent DDoS)
 
