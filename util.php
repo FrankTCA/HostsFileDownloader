@@ -65,7 +65,7 @@ class Util {
         $file = file_get_contents("./hosts");
         $rows = explode("\n", $file);
         foreach ($rows as $line) {
-            if (strpos($line, "127.0.0.1") !== false) {
+            if (!str_starts_with($line, "#")) {
                 $domain = str_split(" ")[1];
                 $newLine = "local-zone: \"$domain\"redirect\nlocal-data: \"$domain. A 0.0.0.0\n";
                 fwrite($unbound_file, $newLine);
