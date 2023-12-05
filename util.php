@@ -67,7 +67,7 @@ class Util {
         foreach ($rows as $line) {
             if (!str_starts_with($line, "#")) {
                 $domain = str_split(" ");
-                if ($domain > 1) {
+                if (sizeof($domain) > 1) {
                     $newLine = "local-zone: \"$domain[1]\" redirect\nlocal-data: \"$domain[1]. A 0.0.0.0\n";
                     $writeStr .= $newLine;
                 }
