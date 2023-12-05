@@ -61,16 +61,17 @@ class Util {
 
     function unbound_change() {
         $unbound_file = fopen("./unbound", 'w');
-        fwrite($unbound_file, "server:\n\n");
         $file = file_get_contents("./hosts");
         $rows = explode("\n", $file);
+        $writeStr = "server:\n\n";
         foreach ($rows as $line) {
-            if (!str_starts_with($line, "#")) {
+            if (!str_starts_with($line, "#") && $line !== "") {
                 $domain = str_split(" ")[1];
-                $newLine = "local-zone: \"$domain\"redirect\nlocal-data: \"$domain. A 0.0.0.0\n";
-                fwrite($unbound_file, $newLine);
+                $newLine = "local-zone: \"$domain\" redirect\nlocal-data: \"$domain. A 0.0.0.0\n";
+                $writeStr .= $newLine;
             }
         }
+        fwrite($unbound_file, $writeStr);
         fclose($unbound_file);
     }
 }
