@@ -62,9 +62,9 @@ class Util {
     function unbound_change() {
         $unbound_file = fopen("./unbound", 'w');
         $file = file_get_contents("./hosts");
-        $rows = explode("\r\n", $file);
+        $rows = explode("\n", $file);
         $writeStr = "server:\n\n";
-        foreach ($rows as $line) {
+        foreach (file("./hosts") as $line) {
             if (!str_starts_with($line, "#")) {
                 $domain = str_split(" ");
                 if (sizeof($domain) > 1) {
