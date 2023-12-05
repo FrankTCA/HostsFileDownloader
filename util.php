@@ -62,7 +62,7 @@ class Util {
     function unbound_change() {
         $unbound_file = fopen("./unbound", 'w');
         $file = file_get_contents("./hosts");
-        $rows = explode("\n", $file);
+        $rows = explode("\r\n", $file);
         $writeStr = "server:\n\n";
         foreach ($rows as $line) {
             if (!str_starts_with($line, "#")) {
