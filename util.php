@@ -58,4 +58,17 @@ class Util {
         $str = str_replace("0.0.0.0", "127.0.0.1", $str);
         file_put_contents("./hosts", $str);
     }
+
+    function unbound_change() {
+        $unbound_file = fopen("./unbound", 'w');
+        fwrite("server:\n\n");
+        foreach (file("./hosts") as $line) {
+            if (strpos($line, "127.0.0.1") !== false) {
+                $domain = str_split(" ")[1];
+                $newLine = "local-zone: \"$domain\"redirect\nlocal-data: \"$domain. A 0.0.0.0\n";
+                fwrite($unbound_file, $newLine);
+            }
+        }
+        fclose($unbound_file);
+    }
 }
