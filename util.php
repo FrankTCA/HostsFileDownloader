@@ -56,12 +56,12 @@ class Util {
     function localhost() {
         $str = file_get_contents("./hosts");
         $str = str_replace("0.0.0.0", "127.0.0.1", $str);
-        file_put_contents("./hosts", $str);
+        file_put_contents("./hosts.txt", $str);
     }
 
     function unbound_change() {
         $unbound_file = fopen("./unbound", 'w');
-        $file = file_get_contents("./hosts");
+        $file = file_get_contents("./hosts.txt");
         $rows = explode("\n", $file);
         $writeStr = "server:\n\n";
         foreach (file("./hosts") as $line) {
